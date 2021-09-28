@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  wp-site-1:
+    image: "wordpress"
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=123456
+      - WORDPRESS_DB_NAME=db_wp_site_1
+    ports:
+      - "8080:80"
+    volumes:
+      - ../data/wp-site-1:/var/www/html
+
+networks:
+  default:
+    external:
+      name: wp-networks
